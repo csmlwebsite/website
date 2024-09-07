@@ -195,14 +195,7 @@
       },
     });
 
-    // Function to update image based on slide index
-    function updateImage(index) {
-      const activeSlide = swiper.slides[index];
-      const imageSrc = activeSlide.getAttribute('data-image');
-      document.getElementById('dynamicImage').src = imageSrc;
-    }
-
-    // Update image on slide change
+       // Update image on slide change
     swiper.on('slideChange', function () {
       updateImage(swiper.activeIndex);
     });
