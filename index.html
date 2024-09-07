@@ -36,20 +36,24 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <style>
+   @media only screen and (max-width: 1200px) {
+  .phone-number {
+    display: none;
+  }
+}
+
+  </style>
 </head>
-
 <body class="index-page">
-
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
+  
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-
         <img src="assets/img/logo.png" alt="" style="height: 50vh;">
       </a>
-
+  
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html" class="active">Home<br></a></li>
@@ -60,42 +64,44 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <li style="display: flex; align-items: center;">
-        <i class="bi bi-whatsapp px-1" style="color: #ff9900; font-size: 1.8rem; margin-right: 0.5rem;"></i>
-        <a href="https://wa.me/8980888834" style="color: white; text-decoration: none;">+91 8980888834</a>
-        
-      </li>
-            
+      <div class="d-flex align-items-center" >
+        <i class="bi bi-whatsapp px-1 phone-number" style="color: #ff9900; font-size: 1.8rem; margin-right: 0.5rem;"></i>
+        <a href="https://wa.me/8980888834" class="phone-number" style="color: white; text-decoration: none;">+91 8980888834</a>
+      </div>
     </div>
   </header>
 
   <main class="main">
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+  <!-- Loading Banner -->
+  <div id="loading-banner" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/loading-banner.jpg') no-repeat center center; background-size: cover; z-index: 10;">
+  </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-      <video id="hero-video" autoplay muted loop playsinline data-aos="fade-in" style="width: 100%;">
-        <source src="assets/cover.mp4" type="video/mp4" id="video-source">
-        Your browser does not support the video tag.
-      </video>
+  <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/cover-poster.jpg" style="width: 100%; display: none;">
+    <source src="assets/cover.mp4" type="video/mp4" id="video-source">
+    Your browser does not support the video tag.
+  </video>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4">
-            <h1 data-aos="fade-up">Make your <span style="color: #ff9900;"><em>own brand</em></span> with <span
-                style="color: #ff9900;">experts</span></h1>
-            <div data-aos="fade-up" data-aos-delay="100" class="my-4">
-              <p>Private label Perfumes, Skin care, Deodorants and Aerosol Products</p>
-            </div>
-            <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-              <a href="#about" class="btn-get-started">Get Quote</a>
-              <a href="https://www.youtube.com/watch?v=iO3tnUsZnxA"
-                class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
-                  Full Video</span></a>
-            </div>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4">
+        <h1 data-aos="fade-up">Make your <span style="color: #ff9900;"><em>own brand</em></span> with <span
+            style="color: #ff9900;">experts</span></h1>
+        <div data-aos="fade-up" data-aos-delay="100" class="my-4">
+          <p>Private label Perfumes, Skin care, Deodorants and Aerosol Products</p>
+        </div>
+        <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+          <a href="#about" class="btn-get-started">Get Quote</a>
+          <a href="https://www.youtube.com/watch?v=iO3tnUsZnxA"
+            class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
+              Full Video</span></a>
         </div>
       </div>
-    </section><!-- /Hero Section -->
+    </div>
+  </div>
+</section><!-- /Hero Section -->
+
 
 
 
@@ -125,11 +131,11 @@
                   "spaceBetween": 40
                 },
                 "480": {
-                  "slidesPerView": 3,
+                  "slidesPerView": 2,
                   "spaceBetween": 60
                 },
                 "640": {
-                  "slidesPerView": 4,
+                  "slidesPerView": 3,
                   "spaceBetween": 80
                 },
                 "992": {
@@ -460,6 +466,35 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const heroVideo = document.getElementById('hero-video');
+    const loadingBanner = document.getElementById('loading-banner');
+
+    // Lazy load the video
+    const loadVideo = () => {
+      heroVideo.style.display = "block"; // Show video
+      heroVideo.play(); // Play video when loaded
+    };
+
+    // Remove loading banner when video is ready to play
+    heroVideo.addEventListener('canplay', () => {
+      loadingBanner.style.display = 'none'; // Hide banner
+    });
+
+    // Use IntersectionObserver for lazy loading
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadVideo();
+        observer.disconnect(); // Stop observing once the video has loaded
+      }
+    }, {
+      threshold: 0.1
+    });
+
+    observer.observe(heroVideo);
+  });
+</script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
