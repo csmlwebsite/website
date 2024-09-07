@@ -72,13 +72,10 @@
   </header>
 
   <main class="main">
+
 <!-- Hero Section -->
 <section id="hero" class="hero section dark-background">
-  <!-- Loading Banner -->
-  <div id="loading-banner" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/loading-banner.jpg') no-repeat center center; background-size: cover; z-index: 10;">
-  </div>
-
-  <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/cover-poster.jpg" style="width: 100%; display: none;">
+  <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/cover-poster.jpg" style="width: 100%;">
     <source src="assets/cover.mp4" type="video/mp4" id="video-source">
     Your browser does not support the video tag.
   </video>
@@ -466,35 +463,7 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const heroVideo = document.getElementById('hero-video');
-    const loadingBanner = document.getElementById('loading-banner');
-
-    // Lazy load the video
-    const loadVideo = () => {
-      heroVideo.style.display = "block"; // Show video
-      heroVideo.play(); // Play video when loaded
-    };
-
-    // Remove loading banner when video is ready to play
-    heroVideo.addEventListener('canplay', () => {
-      loadingBanner.style.display = 'none'; // Hide banner
-    });
-
-    // Use IntersectionObserver for lazy loading
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        loadVideo();
-        observer.disconnect(); // Stop observing once the video has loaded
-      }
-    }, {
-      threshold: 0.1
-    });
-
-    observer.observe(heroVideo);
-  });
-</script>
+<script></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
